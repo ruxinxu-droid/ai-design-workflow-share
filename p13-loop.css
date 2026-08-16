@@ -1,0 +1,50 @@
+/* Page 13 — animated, self-explanatory workflow loop. */
+#p13.loop-redesign{position:relative;overflow:hidden;isolation:isolate;background:#050505}
+#p13.loop-redesign::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 16%,rgba(5,5,5,.12) 62%,rgba(5,5,5,.78) 100%),linear-gradient(180deg,rgba(5,5,5,.3),transparent 25%,rgba(5,5,5,.25))}
+#p13.loop-redesign>.p13-radar{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block;pointer-events:none;opacity:.78}
+#p13.loop-redesign>.panel-viewport{position:relative;z-index:2;display:grid;grid-template-rows:auto 1fr;gap:clamp(14px,2.1vh,24px);align-content:center}
+#p13.loop-redesign>.panel-viewport>header{display:block;margin:0;text-align:center}
+#p13.loop-redesign>.panel-viewport>header h2{max-width:none;margin:0 auto;font-size:clamp(48px,5vw,78px);line-height:.92;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+#p13.loop-redesign>.kinetic-word{display:none}
+
+.cycle-workflow{position:relative;width:min(100%,1180px);height:min(56vh,540px);min-height:420px;margin:auto;overflow:visible;isolation:isolate}
+.cycle-workflow__drawing{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 15px rgba(255,77,0,.09))}
+.cycle-workflow__track,.cycle-workflow__signal{fill:none;vector-effect:non-scaling-stroke}
+.cycle-workflow__track{stroke:rgba(255,255,255,.23);stroke-width:1.25}
+.cycle-workflow__signal{stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-dasharray:18 22;opacity:.92}
+.cycle-workflow__runner-halo{fill:rgba(255,77,0,.15);stroke:rgba(255,112,48,.55);stroke-width:1;vector-effect:non-scaling-stroke}
+.cycle-workflow__runner{fill:#ff7a35;filter:drop-shadow(0 0 8px rgba(255,77,0,.9))}
+
+/* These four anchors use the exact normalized coordinates of the SVG path. */
+.cycle-node-anchor{position:absolute;z-index:3;width:clamp(164px,15.5vw,218px);transform:translate(-50%,-50%)}
+.cycle-node--production{left:13.333%;top:50%}
+.cycle-node--launch{left:50%;top:15.385%}
+.cycle-node--data{left:86.667%;top:50%}
+.cycle-node--iteration{left:50%;top:84.615%}
+
+/* StarBorder translated from the supplied React component to this vanilla page. */
+.cycle-node{position:relative;display:block;width:100%;padding:1px 0;border:0;border-radius:15px;overflow:hidden;background:transparent;color:var(--paper);cursor:pointer;box-shadow:0 18px 48px rgba(0,0,0,.3);transition:transform 420ms cubic-bezier(.2,0,0,1),box-shadow 420ms cubic-bezier(.2,0,0,1)}
+.cycle-node__star{position:absolute;z-index:0;width:300%;height:55%;border-radius:50%;opacity:.75;background:radial-gradient(circle,#ff6a21,transparent 10%);pointer-events:none}
+.cycle-node__star--bottom{right:-250%;bottom:-13px;animation:p13StarBottom 5.8s linear infinite alternate}
+.cycle-node__star--top{top:-13px;left:-250%;animation:p13StarTop 5.8s linear infinite alternate}
+.cycle-node__inner{position:relative;z-index:1;min-height:76px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:13px;padding:14px 18px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:rgba(8,8,8,.94);transition:border-color 420ms cubic-bezier(.2,0,0,1),background-color 420ms cubic-bezier(.2,0,0,1),color 420ms cubic-bezier(.2,0,0,1)}
+.cycle-node:focus-visible{outline:2px solid var(--orange);outline-offset:4px}
+.cycle-node:active{transform:scale(.965)}
+.cycle-node em{color:var(--orange);font:800 10px/1 Arial,sans-serif;letter-spacing:.12em;font-style:normal;font-variant-numeric:tabular-nums}
+.cycle-node b{font:900 clamp(17px,1.45vw,22px)/1.08 Impact,"Arial Narrow","PingFang SC",sans-serif;letter-spacing:.02em;text-align:left}
+.cycle-node.is-active{box-shadow:0 0 0 1px rgba(255,77,0,.45),0 24px 64px rgba(255,77,0,.22)}
+.cycle-node.is-active .cycle-node__inner{border-color:#ff6422;background:var(--orange);color:#0b0b0a}
+.cycle-node.is-active em{color:#0b0b0a}
+
+@keyframes p13StarBottom{0%{transform:translate(0,0);opacity:1}100%{transform:translate(-100%,0);opacity:0}}
+@keyframes p13StarTop{0%{transform:translate(0,0);opacity:1}100%{transform:translate(100%,0);opacity:0}}
+
+@media(max-width:900px){#p13.loop-redesign>.panel-viewport{display:block}.cycle-workflow{height:620px;min-height:620px}.cycle-node-anchor{width:154px}.cycle-node--production{left:16%}.cycle-node--data{left:84%}}
+@media(max-width:620px){.cycle-workflow{height:560px;min-height:560px}.cycle-node-anchor{width:134px}.cycle-node__inner{min-height:66px;padding:10px;gap:8px}.cycle-node b{font-size:15px}.cycle-node--production{left:20%}.cycle-node--data{left:80%}}
+@media(prefers-reduced-motion:reduce){.cycle-node,.cycle-node__inner{transition-duration:.01ms}.cycle-node__star{animation:none;opacity:.28}}
+
+/* Page-specific motion stays live while editing mode pauses deck entrance effects. */
+html.motion-paused .cycle-node{transition:transform 420ms cubic-bezier(.2,0,0,1),box-shadow 420ms cubic-bezier(.2,0,0,1)!important}
+html.motion-paused .cycle-node__inner{transition:border-color 420ms cubic-bezier(.2,0,0,1),background-color 420ms cubic-bezier(.2,0,0,1),color 420ms cubic-bezier(.2,0,0,1)!important}
+html.motion-paused .cycle-node__star--bottom{animation:p13StarBottom 5.8s linear infinite alternate!important;animation-play-state:running!important}
+html.motion-paused .cycle-node__star--top{animation:p13StarTop 5.8s linear infinite alternate!important;animation-play-state:running!important}

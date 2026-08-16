@@ -1,0 +1,25 @@
+/* Page 10: one consistent frame for image evidence and prompt documents. */
+#p10 .five-flow button{position:relative;min-height:76px;padding:13px 15px;text-align:left;line-height:1.45;transition-property:background-color,color,transform;transition-duration:180ms;transition-timing-function:cubic-bezier(.2,0,0,1)}
+#p10 .five-flow button:active{transform:scale(.96)}
+#p10 .five-flow button:focus-visible{outline:2px solid var(--orange);outline-offset:-3px}
+#p10 .step-stage.p10-stage{height:min(44vh,430px);padding:clamp(16px,1.5vw,22px);grid-template-columns:minmax(170px,.23fr) minmax(0,1fr);gap:clamp(18px,2.2vw,32px);align-items:stretch;background:#0c0c0b;color:#fff;box-shadow:8px 8px 0 var(--orange);text-align:left}
+.p10-stage__intro{align-self:center;min-width:0}
+.p10-stage__intro>span{display:block;margin:0 0 10px;color:var(--orange);font:800 9px/1 Arial,sans-serif;letter-spacing:.15em;font-variant-numeric:tabular-nums}
+.p10-stage__intro h3{margin:0 0 12px;font:900 clamp(25px,2.3vw,36px)/1 Impact,"Arial Narrow","PingFang SC",sans-serif;letter-spacing:-.02em;text-wrap:balance}
+.p10-stage__intro p{margin:0;color:#aaa!important;font-size:12px!important;line-height:1.58!important;text-wrap:pretty}
+.p10-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,.8vw,12px);height:100%;min-width:0;align-items:center}
+.p10-gallery figure{display:grid;grid-template-rows:auto 34px;min-width:0;height:auto;margin:0;overflow:hidden;background:#f0ede6;outline:1px solid oklch(1 0 0 / .14);outline-offset:-1px}
+.p10-gallery__media{min-width:0;min-height:0;aspect-ratio:3/4;overflow:hidden;background:#e4dfd5}
+.p10-gallery img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:none;outline:0!important}
+.p10-gallery--workflow img{object-fit:cover;object-position:center}
+.p10-gallery figcaption{display:flex;align-items:center;justify-content:space-between;gap:5px;padding:0 9px;background:#f0ede6;color:#191916;font:800 8px/1 Arial,sans-serif;letter-spacing:.07em;font-variant-numeric:tabular-nums}
+.p10-gallery figcaption b{color:var(--orange);font-size:11px}
+.p10-prompt-document{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;height:100%;min-width:0;overflow:hidden}
+.p10-prompt-card{min-width:0;height:100%;padding:clamp(14px,1.35vw,20px);overflow:auto;background:#f3efe7;color:#191916;outline:1px solid oklch(0 0 0 / .1);outline-offset:-1px;scrollbar-width:thin}
+.p10-prompt-card>span{display:block;margin:0 0 10px;color:var(--orange);font:800 9px/1 Arial,sans-serif;letter-spacing:.14em}
+.p10-prompt-card h4{margin:0 0 12px;font-size:18px;line-height:1.18;text-wrap:balance}
+.p10-prompt-card p{margin:0;color:#373530!important;font-size:12.5px!important;line-height:1.62!important;text-wrap:pretty}
+.p10-prompt-card p+p{margin-top:10px;padding-top:10px;border-top:1px solid rgba(25,25,22,.16)}
+.p10-prompt-card strong{color:#191916;font-weight:800}
+html.motion-paused #p10 .five-flow button{transition:background-color 180ms cubic-bezier(.2,0,0,1),color 180ms cubic-bezier(.2,0,0,1),transform 180ms cubic-bezier(.2,0,0,1)!important}
+@media(max-width:900px){#p10 .step-stage.p10-stage{height:auto;min-height:560px;grid-template-columns:1fr}.p10-gallery{grid-template-columns:repeat(2,minmax(0,1fr));height:auto}.p10-gallery figure{height:360px}.p10-prompt-document{grid-template-columns:1fr;height:auto}.p10-prompt-card{max-height:none}}

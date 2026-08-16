@@ -1,0 +1,30 @@
+/* Page 07 — sequential material scan, matched to content-structure.html */
+@media(min-width:901px){#p7>.panel-viewport{display:grid;grid-template-columns:minmax(340px,.55fr) minmax(620px,1.45fr);grid-template-areas:"head sequence" "result sequence";column-gap:5vw;align-items:center}#p7 .panel-viewport>header{grid-area:head;align-self:end;margin:0}#p7 .render-sequence{grid-area:sequence}#p7 .result-caption{grid-area:result;align-self:start;margin:30px 0 0;font-size:14px}}
+.render-sequence{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,.737fr) minmax(0,1.668fr);grid-template-rows:auto 24px;gap:12px 14px;height:auto;min-height:0;align-items:start}
+.render-sequence__card{position:relative;display:grid;grid-template-rows:auto 44px;min-width:0;min-height:0;margin:0;padding:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#e6e2da;box-shadow:0 18px 44px rgba(12,12,11,.08);outline:none;cursor:pointer;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .55s var(--ease),border-color .55s var(--ease),box-shadow .55s var(--ease)}
+.render-sequence__visual{position:relative;width:100%;height:auto;overflow:hidden;border-radius:0;background:#e6e2da;isolation:isolate}
+.render-sequence__visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#e6e2da}
+.render-sequence [data-render-card="1"] .render-sequence__visual{aspect-ratio:.75/1}
+.render-sequence [data-render-card="2"] .render-sequence__visual{aspect-ratio:.737/1}
+.render-sequence__local .render-sequence__visual img{object-fit:cover;object-position:center;transform:none}
+.render-sequence__kv .render-sequence__visual{width:100%;height:auto;aspect-ratio:1.668/1;top:auto;transform:none}
+.render-sequence__kv .render-sequence__visual img{object-fit:cover;object-position:center}
+.render-sequence__material{z-index:2;clip-path:inset(0 0 100% 0);transition:clip-path 1.28s cubic-bezier(.65,0,.22,1);will-change:clip-path}
+.render-sequence__line{position:absolute;z-index:5;left:0;right:0;top:0;height:2px;opacity:0;background:var(--orange);box-shadow:0 0 16px 3px rgba(255,77,0,.5),0 16px 40px 7px rgba(255,77,0,.14);transform:translateY(-4px)}
+.render-sequence__card figcaption{position:relative;z-index:8;left:auto;right:auto;bottom:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;height:44px;padding:8px 10px;border-radius:0;background:#0c0c0b;color:#fff}
+.render-sequence__card figcaption b{font-size:10px;letter-spacing:.03em}.render-sequence__card figcaption small{max-width:58%;color:rgba(255,255,255,.58);font-size:7px;text-align:right}
+.render-sequence[data-render-step="1"] [data-render-card="1"] .render-sequence__material,.render-sequence[data-render-step="2"] [data-render-card="1"] .render-sequence__material,.render-sequence[data-render-step="2"] [data-render-card="2"] .render-sequence__material,.render-sequence[data-render-step="3"] .render-sequence__material{clip-path:inset(0)}
+.render-sequence[data-render-step="1"] [data-render-card="1"],.render-sequence[data-render-step="2"] [data-render-card="2"],.render-sequence[data-render-step="3"] [data-render-card="3"]{z-index:4;border-color:var(--orange);box-shadow:0 24px 60px rgba(12,12,11,.15),0 0 0 1px var(--orange);transform:translateY(-7px) scale(1.015)}
+.render-sequence__card.is-scanning .render-sequence__line{animation:p7MaterialScan 1.28s cubic-bezier(.65,0,.22,1) both}
+.render-sequence__status{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(120px,1fr) auto;align-items:center;gap:12px;color:var(--muted);font-size:8px;letter-spacing:.09em}
+.render-sequence__status>span b{color:var(--orange);font-size:11px}.render-sequence__status>i{height:2px;overflow:hidden;background:rgba(12,12,11,.12)}.render-sequence__status>i em{display:block;width:0;height:100%;background:var(--orange);transition:width .8s var(--ease)}.render-sequence__status>small{font-size:7px}
+@keyframes p7MaterialScan{0%{opacity:0;transform:translateY(-4px)}8%{opacity:1}84%{opacity:1}100%{opacity:0;transform:translateY(calc(var(--scan-distance,430px) - 4px))}}
+@media(max-width:900px){.render-sequence{height:auto;min-height:0;grid-template-columns:1fr 1fr}.render-sequence__card{height:auto}.render-sequence__kv{grid-column:1/-1}.render-sequence__status{grid-column:1/-1}}
+@media(max-width:600px){.render-sequence{grid-template-columns:1fr}.render-sequence__kv{grid-column:auto}.render-sequence__card{height:auto}}
+@media(prefers-reduced-motion:reduce){.render-sequence__card,.render-sequence__material,.render-sequence__status>i em{transition-duration:.01ms!important}.render-sequence__line{animation-duration:.01ms!important}}
+
+/* The deck is temporarily motion-paused, but this user-triggered comparison remains active. */
+html.motion-paused .render-sequence__card{transition:transform .8s cubic-bezier(.22,1,.36,1),border-color .55s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1)!important}
+html.motion-paused .render-sequence__material{transition:clip-path 1.28s cubic-bezier(.65,0,.22,1)!important}
+html.motion-paused .render-sequence__status>i em{transition:width .8s cubic-bezier(.16,1,.3,1)!important}
+html.motion-paused .render-sequence__card.is-scanning .render-sequence__line{animation:p7MaterialScan 1.28s cubic-bezier(.65,0,.22,1) both!important;animation-play-state:running!important}

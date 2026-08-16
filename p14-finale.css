@@ -1,0 +1,52 @@
+/* Page 14 — minimal conclusion with a restrained ambient field. */
+#p14.finale-redesign{
+  position:relative;
+  min-height:calc(100vh - 70px);
+  padding:0!important;
+  overflow:hidden;
+  isolation:isolate;
+  background:#080807!important;
+  background-image:none!important;
+  color:var(--paper);
+}
+#p14.finale-redesign::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/25% 100%,
+    radial-gradient(circle at 78% 48%,rgba(255,78,0,.07),transparent 32%),
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 28%,rgba(0,0,0,.2));
+  mask-image:linear-gradient(to right,transparent,black 25%,black 90%,transparent);
+}
+#p14.finale-redesign::after{content:none}
+#p14.finale-redesign>.panel-viewport{width:100%!important;min-height:calc(100vh - 70px)}
+.finale-ambient{position:absolute;z-index:0;inset:0;width:100%;height:100%;pointer-events:none;opacity:.76}
+.finale-layout{
+  position:relative;
+  z-index:2;
+  width:min(var(--max),calc(100% - 120px));
+  min-height:calc(100vh - 70px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr auto;
+  align-items:center;
+  padding:clamp(72px,9vh,110px) 0 42px;
+}
+.finale-message{align-self:center;width:100%;max-width:1180px;margin:auto;text-align:center}
+#p14 .finale-message h2{max-width:none;margin:0 auto;display:grid;row-gap:clamp(14px,2.2vh,28px);font:900 clamp(76px,8.6vw,138px)/1 Impact,"Arial Narrow","PingFang SC",sans-serif;letter-spacing:-.045em;text-wrap:balance}
+#p14 .finale-message h2 span{display:block;width:max-content;max-width:100%;margin-inline:auto;color:var(--paper)}
+#p14 .finale-message h2 span:first-child{transform:translateX(clamp(-72px,-4vw,-32px))}
+#p14 .finale-message h2 span:last-child{color:var(--orange);transform:translateX(clamp(32px,4vw,72px))}
+.finale-qr{position:absolute;z-index:4;right:clamp(34px,4vw,78px);bottom:clamp(34px,5vh,62px);width:clamp(150px,10vw,190px);margin:0;color:var(--paper)}
+.finale-qr__placeholder{position:relative;width:100%;aspect-ratio:1;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;background:rgba(8,8,7,.5);box-shadow:0 28px 70px rgba(0,0,0,.26)}
+.finale-qr__placeholder::before,.finale-qr__placeholder::after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,78,0,.32)}
+.finale-qr__placeholder::after{inset:50%;width:1px;height:calc(100% - 24px);border:0;background:rgba(255,255,255,.12);transform:translate(-50%,-50%)}
+.finale-qr__placeholder i{position:absolute;left:12px;right:12px;top:50%;height:1px;background:rgba(255,255,255,.12)}
+.finale-qr__placeholder b{position:relative;z-index:2;color:var(--orange);font:900 32px/1 Impact;letter-spacing:.08em}
+@media(max-width:900px){.finale-layout{width:calc(100% - 36px)}#p14 .finale-message h2{font-size:clamp(54px,11vw,94px)}.finale-qr{right:24px;bottom:32px;width:140px}}
+@media(max-width:620px){.finale-layout{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:36px;padding:90px 0 28px}#p14 .finale-message h2{row-gap:12px}#p14 .finale-message h2 span:first-child,#p14 .finale-message h2 span:last-child{transform:none}.finale-qr{right:18px;bottom:24px;width:112px}}
+@media(prefers-reduced-motion:reduce){.finale-ambient{opacity:.5}}

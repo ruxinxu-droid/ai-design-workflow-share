@@ -1,0 +1,21 @@
+html.motion-paused{scroll-behavior:auto!important}
+html.motion-paused *,html.motion-paused *:before,html.motion-paused *:after{animation:none!important;animation-play-state:paused!important;transition:none!important}
+html.motion-paused .opening{display:none!important;visibility:hidden!important}
+html.motion-paused .hero-line,html.motion-paused .hero-team,html.motion-paused .hero-tags span,html.motion-paused .hero-logo-loop{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+html.motion-paused .motion-media,html.motion-paused .motion-media img{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+html.motion-paused .kinetic-word{display:none!important}
+html.motion-paused .gradient-waves-container canvas{visibility:visible!important}
+html.motion-paused .logoloop__track{transform:translate3d(0,0,0)!important}
+
+/* Keep page motion paused while allowing the explicitly requested P7 interaction. */
+html.motion-paused .render-sequence__card{transition:transform .8s cubic-bezier(.22,1,.36,1),border-color .55s cubic-bezier(.16,1,.3,1),box-shadow .55s cubic-bezier(.16,1,.3,1)!important}
+html.motion-paused .render-sequence__material{transition:clip-path 1.28s cubic-bezier(.65,0,.22,1)!important}
+html.motion-paused .render-sequence__status>i em{transition:width .8s cubic-bezier(.16,1,.3,1)!important}
+html.motion-paused .render-sequence__card.is-scanning .render-sequence__line{animation:p7MaterialScan 1.28s cubic-bezier(.65,0,.22,1) both!important;animation-play-state:running!important}
+
+/* Keep editing mode paused while allowing the explicitly requested P4 Stepper. */
+html.motion-paused .workflow-step{transition:opacity 420ms cubic-bezier(.2,0,0,1),transform 420ms cubic-bezier(.2,0,0,1)!important}
+html.motion-paused .workflow-stepper__rail button{transition:background-color 260ms cubic-bezier(.2,0,0,1),color 260ms cubic-bezier(.2,0,0,1),transform 260ms cubic-bezier(.2,0,0,1)!important}
+html.motion-paused .workflow-stepper__rail i:after{transition:transform 360ms cubic-bezier(.2,0,0,1)!important}
+html.motion-paused .workflow-stepper__footer button{transition:color 180ms cubic-bezier(.2,0,0,1),opacity 180ms cubic-bezier(.2,0,0,1),transform 180ms cubic-bezier(.2,0,0,1)!important}
+@media(prefers-reduced-motion:reduce){html.motion-paused .workflow-step,html.motion-paused .workflow-stepper__rail button,html.motion-paused .workflow-stepper__rail i:after,html.motion-paused .workflow-stepper__footer button{transition-duration:0ms!important}}

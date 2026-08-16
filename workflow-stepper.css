@@ -1,0 +1,39 @@
+/* Vanilla adaptation of the supplied React Bits Stepper for page 04. */
+#p4 .workflow-stepper{grid-area:flow;align-self:center;width:100%;min-width:0;padding:clamp(20px,2vw,30px);border:1px solid var(--ink);background:rgba(242,239,232,.52);box-shadow:0 22px 55px rgba(25,25,22,.08)}
+.workflow-stepper__rail{display:flex;align-items:center;width:100%;margin:0 0 clamp(18px,2.4vh,28px)}
+.workflow-stepper__rail button{position:relative;display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;padding:0;border:1px solid var(--ink);border-radius:50%;background:var(--paper);color:var(--muted);cursor:pointer;transition-property:background-color,color,transform;transition-duration:260ms;transition-timing-function:cubic-bezier(.2,0,0,1)}
+.workflow-stepper__rail button:active,.workflow-stepper__footer button:active{transform:scale(.96)}
+.workflow-stepper__rail button:focus-visible,.workflow-stepper__footer button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.workflow-stepper__rail button span{font:800 12px/1 Arial,sans-serif;font-variant-numeric:tabular-nums}
+.workflow-stepper__rail button b{position:absolute;top:calc(100% + 7px);left:50%;transform:translateX(-50%);font:700 7px/1 Arial,sans-serif;letter-spacing:.09em;white-space:nowrap;color:currentColor}
+.workflow-stepper__rail button.is-active,.workflow-stepper__rail button.is-complete{background:var(--orange);color:#fff;border-color:var(--orange)}
+.workflow-stepper__rail button.is-complete span{font-size:0}
+.workflow-stepper__rail button.is-complete span:after{content:'\2713';font-size:15px}
+.workflow-stepper__rail i{position:relative;flex:1;height:2px;margin:0 10px;background:rgba(25,25,22,.16);overflow:hidden}
+.workflow-stepper__rail i:after{content:"";position:absolute;inset:0;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 360ms cubic-bezier(.2,0,0,1)}
+.workflow-stepper__rail i.is-complete:after{transform:scaleX(1)}
+.workflow-stepper__stage{position:relative;min-height:min(43vh,430px);overflow:hidden}
+.workflow-step{position:absolute;inset:0;display:grid;grid-template-columns:minmax(260px,1fr) minmax(180px,.62fr);gap:clamp(22px,2.2vw,34px);align-items:center;opacity:0;visibility:hidden;transform:translateX(34px);transition-property:opacity,transform;transition-duration:420ms;transition-timing-function:cubic-bezier(.2,0,0,1)}
+.workflow-step.is-active{position:relative;opacity:1;visibility:visible;transform:translateX(0)}
+.workflow-step.is-leaving-left{visibility:visible;transform:translateX(-22px);opacity:0}
+.workflow-step.is-leaving-right{visibility:visible;transform:translateX(22px);opacity:0}
+.workflow-step.is-entering-left{transform:translateX(-34px)}
+.workflow-step figure{position:relative;width:100%;max-width:min(43vh,430px);aspect-ratio:1;margin:0;overflow:hidden;background:transparent}
+.workflow-step figure img{display:block;width:100%;height:100%;object-fit:cover;filter:none;outline:1px solid oklch(0 0 0 / .1);outline-offset:-1px}
+.workflow-step__media--fit>img{object-fit:contain;object-position:center}
+.workflow-step__media--grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:1px;background:oklch(0 0 0 / .1)}
+.workflow-step__media--grid>span{position:relative;min-width:0;min-height:0;overflow:hidden;background:var(--paper)}
+.workflow-step__media--grid>span>img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;object-position:center;outline:0}
+.workflow-step>div{align-self:end;padding:0 0 8px}
+.workflow-step>div>span{display:block;margin-bottom:10px;color:var(--orange);font:800 10px/1 Arial,sans-serif;letter-spacing:.15em;font-variant-numeric:tabular-nums}
+.workflow-step h3{margin:0 0 14px;font:900 clamp(29px,2.5vw,42px)/.98 Impact,"Arial Narrow","PingFang SC",sans-serif;letter-spacing:-.025em;text-wrap:balance}
+.workflow-step p{max-width:24ch;margin:0;font-size:13px!important;line-height:1.65!important;color:var(--muted);text-wrap:pretty}
+.workflow-stepper__footer{display:flex;align-items:center;justify-content:space-between;margin-top:clamp(16px,2vh,22px);padding:16px 0 0;border-top:1px solid rgba(25,25,22,.18);background:transparent;color:var(--ink);letter-spacing:normal}
+.workflow-stepper__footer button{min-width:104px;min-height:40px;padding:0;border:0;background:transparent;color:var(--ink);font-size:11px;font-weight:800;cursor:pointer;transition-property:color,opacity,transform;transition-duration:180ms;transition-timing-function:cubic-bezier(.2,0,0,1)}
+.workflow-stepper__footer button:last-child{text-align:right;color:var(--orange)}
+.workflow-stepper__footer button:disabled{opacity:.28;cursor:default}
+.workflow-stepper__footer span{color:var(--muted);font:700 11px/1 Arial,sans-serif;letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.workflow-stepper__footer span b{color:var(--ink);font-size:18px}
+@media(max-width:900px){#p4 .workflow-stepper{padding:18px}.workflow-stepper__stage{min-height:auto}.workflow-step{grid-template-columns:minmax(220px,1fr) minmax(160px,.7fr)}.workflow-step figure{max-width:360px}}
+@media(max-width:620px){.workflow-stepper__rail button{flex-basis:42px;width:42px;height:42px}.workflow-stepper__rail i{margin:0 5px}.workflow-step{grid-template-columns:1fr}.workflow-step figure{max-width:none}.workflow-step>div{padding-top:15px}.workflow-step p{max-width:none}}
+@media(prefers-reduced-motion:reduce){.workflow-step,.workflow-stepper__rail button,.workflow-stepper__rail i:after,.workflow-stepper__footer button{transition-duration:0ms}}

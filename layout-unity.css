@@ -1,0 +1,340 @@
+/* Unified editorial layout for pages 02–14. The hero remains intentionally independent. */
+:root{
+  --page-gutter:clamp(42px,6vw,92px);
+  --section-gap:clamp(22px,3.2vh,38px);
+  --content-gap:clamp(12px,1.35vw,22px);
+  --copy-width:42ch;
+  --media-outline:oklch(0 0 0 / .1);
+}
+
+html{-webkit-font-smoothing:antialiased}
+.panel:not(.hero){container-type:inline-size}
+.panel:not(.hero)>.panel-viewport{width:min(var(--max),calc(100% - (var(--page-gutter) * 2)))}
+#p3>.panel-viewport,#p5>.panel-viewport,#p9>.panel-viewport,#p13>.panel-viewport,#p14>.panel-viewport{width:min(var(--max),calc(100% - (var(--page-gutter) * 2)))}
+
+/* One repeatable reading order: index → statement → explanation → evidence. */
+.panel:not(.hero) .ref{
+  margin:0 0 12px;
+  font-size:10px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.panel:not(.hero) h2{
+  max-width:13ch;
+  margin:0;
+  font-size:clamp(52px,5.35vw,84px);
+  font-weight:900;
+  line-height:.94;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.panel:not(.hero) p{
+  line-height:1.68;
+  text-wrap:pretty;
+}
+.panel:not(.hero)>.panel-viewport>header{
+  max-width:none;
+  margin:0 0 var(--section-gap);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(300px,.48fr);
+  grid-template-areas:"ref copy" "title copy";
+  column-gap:clamp(40px,6vw,96px);
+  align-items:end;
+}
+.panel:not(.hero)>.panel-viewport>header>.ref{grid-area:ref;align-self:end}
+.panel:not(.hero)>.panel-viewport>header>h2{grid-area:title}
+.panel:not(.hero)>.panel-viewport>header>.case-label{grid-area:ref;align-self:end;margin:0 0 12px 158px;font-size:10px;line-height:1;letter-spacing:.08em}
+.panel:not(.hero)>.panel-viewport>header>p:last-child{
+  grid-area:copy;
+  max-width:var(--copy-width);
+  margin:0 0 3px;
+  padding-left:20px;
+  border-left:2px solid var(--orange);
+  font-size:14px;
+  line-height:1.68;
+}
+.panel:not(.hero)>.panel-viewport>header:not(:has(>p:last-child:not(.ref)))>h2{grid-column:1/-1}
+
+/* Evidence surfaces share the same geometry and edge treatment. */
+.panel:not(.hero) img{outline:1px solid var(--media-outline);outline-offset:-1px}
+#p3 img,#p5 img,#p9 img,#p13 img{outline-color:oklch(1 0 0 / .1)}
+.image-card,.preview,.random-deck figure,.blockout-proof,.logic-grid article,.round-image{
+  border-radius:0;
+}
+.compare-cards,.logic-grid,.test-slots,.round-images,.blockout-proof-grid{gap:var(--content-gap)}
+
+/* 02 — paired 3:4 evidence cards. */
+.compare-cards{grid-template-columns:repeat(2,minmax(0,1fr));width:min(100%,900px);max-width:none;gap:clamp(18px,2.8vw,42px)}
+.image-card{position:relative;width:100%;max-height:min(55vh,590px);aspect-ratio:3/4;margin:0;overflow:hidden;cursor:default;border:1px solid var(--ink);background:#d6d1c7;box-shadow:none}
+.image-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.image-card>span{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:86px 22px 20px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff}
+.image-card b{font:900 30px/1 Impact,"Arial Narrow",sans-serif;letter-spacing:-.01em}
+.image-card small{display:none}
+.image-card.accent:after,.image-card--after:after{content:none!important;display:none!important}
+.image-card:hover,.image-card.active{transform:none;box-shadow:none}
+.image-card:hover img,.image-card.active img{transform:scale(1.018);filter:none}
+
+/* 03 — team scale, pressure and deliverables align to the same column rhythm. */
+#p3>.panel-viewport>header{grid-template-columns:1fr;grid-template-areas:"ref" "title"}
+#p3 .team-map{grid-template-columns:1fr 34px 1fr 34px 1fr}
+#p3 .team-map div{min-height:150px;padding:22px}
+#p3 .team-map b{font-size:clamp(38px,4vw,58px);letter-spacing:-.025em}
+#p3 .pressure-triad{display:grid;grid-template-columns:repeat(3,1fr);margin-top:var(--content-gap);border-top:1px solid #444;border-bottom:1px solid #444}
+#p3 .pressure-triad span{padding:14px 20px;border-right:1px solid #444;color:#aaa;font-size:12px;line-height:1.5}
+#p3 .pressure-triad span:last-child{border-right:0}
+#p3 .pressure-triad b{display:block;margin-bottom:3px;color:var(--paper);font-size:13px}
+#p3 .asset-river{margin:var(--content-gap) 0}
+#p3 .takeaway{font-size:18px;line-height:1.55}
+
+/* 04 — steps and their visual proof remain visibly paired. */
+.hover-flow{grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr);gap:clamp(28px,4vw,58px);align-items:start}
+.hover-steps button{min-height:76px;padding:18px 5px;font-size:20px;line-height:1.2}
+.hover-steps button small{display:block;margin:5px 0 0 62px;color:var(--muted);font-size:10px;line-height:1.45;letter-spacing:.04em}
+.hover-steps button:hover small{color:rgba(255,255,255,.72)}
+.preview{width:min(100%,430px);height:auto;aspect-ratio:3/4;justify-self:end;top:90px}
+.workflow-takeaway{margin-top:var(--content-gap);font-size:17px}
+
+/* 05 — inherit the global heading system while preserving its comparison interaction. */
+#p5 .panel-viewport>header{margin-bottom:var(--section-gap);grid-template-columns:1fr;grid-template-areas:"ref" "title"}
+#p5 .panel-viewport>header h2{font-size:clamp(52px,5.35vw,84px)}
+#p5 .panel-viewport>header>p:last-child{font-size:14px;line-height:1.68}
+.random-deck,.blockout-proof-grid{height:clamp(280px,32vh,340px)}
+.random-deck figure,.blockout-proof{aspect-ratio:3/4}
+
+/* 06 and 08 use the same statement-first skeleton despite having no header wrapper. */
+#p6>.panel-viewport,#p8>.panel-viewport,#p14>.panel-viewport{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.48fr);column-gap:clamp(40px,6vw,96px);align-content:center}
+#p6 .ref,#p8 .ref,#p14 .ref{grid-column:1/-1}
+#p6 h2,#p8 h2,#p14 h2{grid-column:1;align-self:end}
+#p6 .question-note,#p8 .bridge-copy,#p14 .final-copy{grid-column:2;align-self:end;max-width:var(--copy-width);margin:0 0 4px;padding-left:20px;border-left:2px solid var(--orange);font-size:14px;line-height:1.68}
+#p6 .answer,#p6 .video-placeholder,#p8 .time-lines,#p8 .test-slots,#p8 .takeaway,#p14 blockquote{grid-column:1/-1}
+#p6 .answer{margin-top:var(--section-gap)}
+#p6 .video-placeholder{margin-top:var(--content-gap)}
+#p8 .time-lines{margin-top:var(--section-gap)}
+#p8 .test-slots{margin:var(--content-gap) 0}
+#p8 .takeaway{font-size:17px}
+.p8-drift-wall{min-width:0;min-height:0;z-index:0}
+
+/* 06 — real demo video replaces the simulated playback placeholder. */
+#p6 video.video-placeholder{display:block;padding:0;object-fit:contain;object-position:center;background:#0c0c0b;cursor:default;outline:1px solid oklch(0 0 0 / .1);outline-offset:-1px}
+#p6 video.video-placeholder:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+/* 06 — final copy and timing comparison: message left, proof right. */
+@media(min-width:901px){
+  #p6>.panel-viewport{
+    display:grid;
+    grid-template-columns:minmax(360px,.68fr) minmax(620px,1.32fr);
+    grid-template-areas:"ref video" "title video" "note video" ". answer";
+    column-gap:clamp(44px,5vw,82px);
+    row-gap:0;
+    align-items:start;
+    align-content:center;
+  }
+  #p6 .ref{grid-area:ref;align-self:end;margin:0 0 clamp(54px,8vh,92px)}
+  #p6 h2{grid-area:title;align-self:end;max-width:8ch;font-size:clamp(58px,5.2vw,84px);line-height:.94}
+  #p6 .question-note{grid-area:note;align-self:start;max-width:32ch;margin:22px 0 0;padding-left:20px;color:var(--orange);font-size:14px;font-weight:700;line-height:1.55}
+  #p6 video.video-placeholder{grid-area:video;width:100%;height:auto;min-height:0;aspect-ratio:16/9;margin:0;align-self:end}
+  #p6 .answer{grid-area:answer;width:100%;max-width:none;margin:18px 0 0;padding:10px 22px;display:grid;grid-template-columns:1fr 42px 1fr;gap:12px;align-items:center;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  #p6 .answer p{margin:0;color:var(--ink);font-size:13px;line-height:1.3;text-align:left;white-space:nowrap}
+  #p6 .answer p:last-child{text-align:center}
+  #p6 .answer b{color:var(--orange);font:900 clamp(30px,2.7vw,44px)/1 Impact,"Arial Narrow",sans-serif;font-variant-numeric:tabular-nums}
+  #p6 .answer span{color:var(--orange);font-size:24px;text-align:center}
+}
+
+/* 07 — the scan is the main event: compact context above, full-width stage below. */
+@media(min-width:901px){
+  #p7>.panel-viewport{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"head" "sequence" "result";
+    column-gap:clamp(40px,6vw,96px);
+    row-gap:clamp(20px,2.7vh,34px);
+    align-items:end;
+  }
+  #p7 .panel-viewport>header{
+    grid-area:head;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(300px,.48fr);
+    grid-template-areas:"ref copy" "title copy";
+    column-gap:clamp(40px,6vw,96px);
+    align-items:end;
+    margin:0;
+  }
+  #p7 .panel-viewport>header>.ref{grid-area:ref}
+  #p7 .panel-viewport>header>h2{grid-area:title;max-width:14ch}
+  #p7 .panel-viewport>header>p:last-child{
+    grid-area:copy;
+    max-width:var(--copy-width);
+    margin:0 0 4px;
+    padding-left:20px;
+    border-left:2px solid var(--orange);
+    font-size:14px;
+    line-height:1.68;
+  }
+  #p7 .render-sequence{grid-area:sequence}
+  #p7 .result-caption{
+    grid-area:result;
+    max-width:none;
+    margin:0;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    line-height:1.65;
+  }
+}
+.render-sequence{gap:var(--content-gap);grid-template-columns:minmax(180px,.72fr) minmax(180px,.72fr) minmax(380px,1.55fr);height:min(58vh,570px);min-height:440px}
+.render-sequence__card{border-radius:18px}
+.render-sequence__visual{border-radius:12px}
+
+/* Page 07: all three comparisons share one hard media height. The third card
+   gains width for its landscape crop; it must never gain or lose height. */
+@media(min-width:901px){
+  #p7 .render-sequence{
+    --p7-media-height:clamp(250px,27vw,400px);
+    grid-template-columns:minmax(0,.75fr) minmax(0,.737fr) minmax(0,1.668fr);
+    grid-template-rows:calc(var(--p7-media-height) + 44px) 24px;
+    height:auto;
+    min-height:0;
+    align-items:stretch;
+  }
+  #p7 .render-sequence__card{
+    height:calc(var(--p7-media-height) + 44px);
+    grid-template-rows:var(--p7-media-height) 44px;
+    border-radius:14px;
+    transform:none;
+  }
+  #p7 .render-sequence__visual,
+  #p7 .render-sequence__kv .render-sequence__visual{
+    width:100%;
+    height:var(--p7-media-height);
+    aspect-ratio:auto;
+    border-radius:0;
+  }
+}
+
+/* 09–11 — consistent portrait campaign assets and interaction stages. */
+.logic-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.five-flow button{min-height:92px;line-height:1.55}
+.step-stage{min-height:0;height:min(44vh,430px);margin-top:var(--content-gap);padding:var(--content-gap);overflow:hidden}
+.step-stage.active{grid-template-columns:minmax(190px,.28fr) minmax(0,1fr);gap:clamp(22px,3vw,44px);align-items:center}
+.step-stage-copy{min-width:0}
+.step-stage-copy h3{margin:10px 0;font-size:clamp(25px,2.4vw,36px);line-height:1.05;text-wrap:balance}
+.step-stage-copy p{margin:0;font-size:13px;line-height:1.65;text-wrap:pretty}
+.step-stage-copy>small{display:block;margin-top:18px;padding-top:12px;border-top:1px solid #444;color:#777;font-size:9px;letter-spacing:.08em}
+.step-media-grid{min-width:0;width:100%;height:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1vw,14px);align-items:center;overflow:hidden}
+.step-media-frame{position:relative;min-width:0;max-height:100%;aspect-ratio:3/4;margin:0;overflow:hidden;background:#f0ede6;box-shadow:inset 0 0 0 1px oklch(0 0 0 / .1)}
+.step-media-frame img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;background:#f0ede6;outline:0}
+.step-media-frame figcaption{position:absolute;left:8px;right:8px;bottom:8px;padding:7px 8px;background:rgba(12,12,11,.84);color:white;font-size:7px;line-height:1;letter-spacing:.08em;backdrop-filter:blur(8px)}
+.step-media-frame--empty{display:grid;place-content:center;gap:8px;text-align:center;background:transparent;border:1px dashed #555;box-shadow:none;color:#777}
+.step-media-frame--empty b{color:var(--orange);font:900 25px/1 Impact,"Arial Narrow",sans-serif}
+.step-media-frame--empty span{font-size:8px;letter-spacing:.08em}
+.execution-tail{margin-top:var(--content-gap)}
+.round-tabs{gap:var(--content-gap)}
+.round-series{display:grid;grid-template-columns:1fr 1fr;margin:var(--content-gap) 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.round-series span{padding:12px 16px;font-size:12px}
+.round-series span+span{border-left:1px solid var(--ink)}
+.round-series b{margin-right:12px;color:var(--orange)}
+.round-images{min-height:0;height:min(38vh,390px);margin:var(--content-gap) 0;padding:var(--content-gap)}
+.round-image{min-height:0;height:100%;aspect-ratio:3/4;padding:14px}
+.round-image b{font-size:26px}
+.data-caveat{margin-top:var(--content-gap);font-size:11px!important}
+
+/* 13–14 — close with the same horizontal cadence. */
+.loop-nodes button{min-width:150px;min-height:64px}
+.loop-detail{min-height:130px;margin-top:var(--content-gap)}
+.loop-conclusion{font-size:17px!important}
+#p14{min-height:0}
+#p14 blockquote{margin-top:clamp(52px,8vh,90px);font-size:clamp(46px,5.4vw,82px)}
+
+@media(max-width:900px){
+  .panel:not(.hero){padding:90px var(--page-gutter)}
+  .panel:not(.hero)>.panel-viewport{width:100%}
+  .panel:not(.hero)>.panel-viewport>header,#p5 .panel-viewport>header,#p6>.panel-viewport,#p8>.panel-viewport,#p14>.panel-viewport{display:block}
+  .panel:not(.hero)>.panel-viewport>header>p:last-child,#p6 .question-note,#p8 .bridge-copy,#p14 .final-copy{margin-top:22px}
+  .compare-cards,.logic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hover-flow{grid-template-columns:1fr}
+  .preview{justify-self:start;position:relative;top:auto}
+  #p3 .team-map{grid-template-columns:1fr}
+  #p3 .team-map i{padding:10px 0;transform:rotate(90deg);justify-self:center}
+  #p3 .pressure-triad{grid-template-columns:1fr}
+  #p3 .pressure-triad span{border-right:0;border-bottom:1px solid #444}
+  #p3 .pressure-triad span:last-child{border-bottom:0}
+  .round-images{height:auto;grid-template-columns:repeat(2,1fr)}
+  .round-image{height:auto}
+}
+
+@media(max-width:620px){
+  :root{--page-gutter:22px}
+  .panel:not(.hero) h2{font-size:clamp(42px,14vw,62px)}
+  .compare-cards,.logic-grid,.test-slots,.round-images{grid-template-columns:1fr}
+  .five-flow{grid-template-columns:1fr}
+  .five-flow button{min-height:64px;border-bottom:1px solid var(--line)}
+  .loop-nodes{display:grid;grid-template-columns:1fr auto}
+  .step-stage{height:auto;min-height:520px}
+  .step-stage.active{grid-template-columns:1fr}
+  .step-media-grid{grid-template-columns:repeat(2,1fr);height:auto}
+}
+
+/* Projection layouts: use the width of a 16:9 screen instead of stacking vertically. */
+@media(min-width:901px){
+  /* Preserve authored line breaks: presentation titles never spill beyond two lines. */
+  .panel:not(.hero) h2{max-width:none;white-space:nowrap;text-wrap:nowrap}
+  #p3 h2{font-size:clamp(40px,4vw,66px)}
+  #p14 h2{font-size:clamp(38px,3.75vw,60px)}
+
+  /* 04: context on the left, interactive step-to-image relationship on the right. */
+  #p4>.panel-viewport{
+    display:grid;
+    grid-template-columns:minmax(300px,.42fr) minmax(620px,1fr);
+    grid-template-areas:"head flow" "take flow";
+    column-gap:clamp(38px,5vw,78px);
+    row-gap:22px;
+    align-items:start;
+  }
+  #p4 .panel-viewport>header{grid-area:head;display:block;margin:0}
+  #p4 .panel-viewport>header h2{font-size:clamp(48px,4.5vw,72px)}
+  #p4 .panel-viewport>header>p:last-child{max-width:36ch;margin:24px 0 0;padding-left:0;border-left:0;font-size:13px}
+  #p4 .hover-flow{grid-area:flow;grid-template-columns:minmax(280px,.82fr) minmax(250px,.72fr);gap:26px;align-items:center}
+  #p4 .hover-steps button{min-height:74px;padding:15px 4px;font-size:18px}
+  #p4 .preview{position:relative;top:auto;width:100%;max-height:62vh;justify-self:stretch}
+  #p4 .workflow-takeaway{grid-area:take;align-self:end;margin:0;padding:17px 0;background:transparent;border-left:0;font-size:14px;line-height:1.58}
+
+  /* 06: the recording is the dominant right-hand surface; timing comparison stays below. */
+  #p6>.panel-viewport{
+    display:grid;
+    grid-template-columns:minmax(360px,.55fr) minmax(560px,1fr);
+    grid-template-areas:"ref video" "title video" "note video" ". answer";
+    column-gap:clamp(42px,5.5vw,86px);
+    row-gap:12px;
+    align-items:end;
+  }
+  #p6 .ref{grid-area:ref;align-self:end}
+  #p6 h2{grid-area:title;font-size:clamp(54px,5.3vw,84px)}
+  #p6 .question-note{grid-area:note;align-self:start;margin:10px 0 0;padding-left:18px;font-size:13px;text-align:left}
+  #p6 .video-placeholder{grid-area:video;width:100%;height:min(50vh,500px);min-height:360px;margin:0;align-self:end}
+  #p6 .answer{grid-area:answer;max-width:none;width:100%;margin:2px 0 0;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:8px;align-items:center}
+  #p6 .answer p{margin:0;padding:12px 14px;font-size:12px;line-height:1.5;text-align:left}
+  #p6 .answer span{font-size:21px;line-height:1;text-align:center}
+  #p6 .answer b{font-size:28px}
+
+  /* 08: workflow comparison and four composition slots share one horizontal field. */
+  #p8>.panel-viewport{
+    display:grid;
+    grid-template-columns:minmax(390px,.54fr) minmax(620px,1fr);
+    grid-template-areas:"ref ref" "title slots" "copy slots" "times slots" "take take";
+    column-gap:clamp(42px,5.5vw,86px);
+    row-gap:16px;
+    align-items:end;
+  }
+  #p8 .ref{grid-area:ref}
+  #p8 h2{grid-area:title;font-size:clamp(52px,5vw,80px);max-width:10ch}
+  #p8 .bridge-copy{grid-area:copy;align-self:start;margin:4px 0 0;padding-left:18px;font-size:13px;text-align:left}
+  #p8 .time-lines{grid-area:times;margin:4px 0 0;grid-template-columns:1fr 1fr}
+  #p8 .time-lines div{min-height:112px;padding:16px;display:block}
+  #p8 .time-lines b{display:block;margin-bottom:8px;font-size:48px}
+  #p8 .time-lines span{font-size:10px;line-height:1.5}
+  #p8 .p8-drift-wall{grid-area:slots;align-self:stretch;width:calc(100% + 5vw);height:min(66vh,650px);margin:-5vh -5vw -5vh 0}
+  #p8>.panel-viewport>.ref,#p8>.panel-viewport>h2,#p8>.panel-viewport>.bridge-copy,#p8>.panel-viewport>.time-lines,#p8>.panel-viewport>.takeaway{position:relative;z-index:2}
+  #p8>.panel-viewport:after{content:none}
+  #p8 .takeaway{grid-area:take;margin:4px 0 0;padding:16px 0 16px 18px;background:transparent;font-size:15px}
+}

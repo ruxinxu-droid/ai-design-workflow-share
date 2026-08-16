@@ -1,0 +1,11 @@
+.motion-media,
+.motion-media img {
+  will-change: transform, opacity, clip-path;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-media,
+  .motion-media img {
+    will-change: auto !important;
+  }
+}

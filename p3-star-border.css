@@ -1,0 +1,95 @@
+/* Page 03 — restrained StarBorder treatment, adapted to the existing square grid. */
+#p3 .team-map > div,
+#p3 .pressure-triad > span,
+#p3 .asset-river > span {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #0b0b0a;
+  transition-property: background-color, box-shadow, transform;
+  transition-duration: 420ms;
+  transition-timing-function: cubic-bezier(.2, 0, 0, 1);
+}
+
+#p3 .team-map > div::before,
+#p3 .pressure-triad > span::before,
+#p3 .asset-river > span::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 220%;
+  height: 72%;
+  left: -170%;
+  top: -35%;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255, 78, 0, .98) 0 2%, rgba(255, 78, 0, .48) 8%, transparent 24%);
+  transform: translateX(0);
+  transition-property: opacity;
+  transition-duration: 180ms;
+  transition-timing-function: ease-out;
+  pointer-events: none;
+}
+
+#p3 .team-map > div::after,
+#p3 .pressure-triad > span::after,
+#p3 .asset-river > span::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px;
+  background: #0b0b0a;
+  pointer-events: none;
+}
+
+#p3 .team-map > div:hover,
+#p3 .pressure-triad > span:hover,
+#p3 .asset-river > span:hover {
+  box-shadow: 0 0 0 1px rgba(255, 78, 0, .24), 0 12px 36px rgba(0, 0, 0, .24);
+  transform: translateY(-2px);
+}
+
+#p3 .team-map > div:hover::before,
+#p3 .pressure-triad > span:hover::before,
+#p3 .asset-river > span:hover::before {
+  opacity: 1;
+  animation: p3-star-edge 1.9s linear infinite alternate;
+}
+
+/* The primary three cards carry the strongest signal. */
+#p3 .team-map > div::before {
+  height: 92%;
+  background: radial-gradient(circle, #ff4e00 0 2%, rgba(255, 78, 0, .68) 8%, transparent 25%);
+}
+
+/* Keep the previous highlighted card visually consistent with the page. */
+#p3 .team-map > div.hot,
+#p3 .team-map > div.hot::after {
+  background: #0b0b0a;
+}
+
+#p3 .pressure-triad > span:hover,
+#p3 .asset-river > span:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes p3-star-edge {
+  from { transform: translateX(0); }
+  to { transform: translateX(125%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #p3 .team-map > div,
+  #p3 .pressure-triad > span,
+  #p3 .asset-river > span {
+    transition-duration: 0ms;
+  }
+
+  #p3 .team-map > div:hover::before,
+  #p3 .pressure-triad > span:hover::before,
+  #p3 .asset-river > span:hover::before {
+    animation: none;
+    opacity: .8;
+    transform: translateX(75%);
+  }
+}

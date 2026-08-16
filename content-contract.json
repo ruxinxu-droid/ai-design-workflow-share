@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "p1": ["阿新", "LID 设计团队", "情绪稳定", "强逻辑", "电子 DIY"],
+    "p2": ["推广图素材生产提效案例", "AIGC 提效 50%", "提效前", "提效后"],
+    "p3": ["1 个品牌", "3 个渠道", "1—2 名设计师", "首页页面", "直播间", "人均作图时间不足"],
+    "p4": ["拆解旧流程", "DMI 素材", "素材库 / 渲染 / 拍摄", "点位上线"],
+    "p5": ["随机抽卡", "废片 03", "白模精准构图", "百分百命中"],
+    "p6": ["白模无需精细化", "20 分钟", "5 分钟", "AI 建模录屏"],
+    "p7": ["产品材质", "礼袋材质", "完整 KV", "1 小时", "10 分钟"],
+    "p8": ["时间从 4H 到 2H", "多出来的是测试机会", "多样构图"],
+    "p9": ["多图不是目的", "视觉语言", "对应人群", "推广逻辑"],
+    "p10": ["把投放结果", "数据排名", "AI 分析视觉语言", "继续上线测试"],
+    "p11": ["2.4% — 2.3% — 2.8% — 2.9%", "2.7% — 2.8% — 4.5% — 3.5%", "最高值", "平均值"],
+    "p13": ["生产素材", "投放", "数据回收", "下一轮迭代"],
+    "p14": ["不必焦虑", "设计师的判断", "重新设计原有的工作方式"]
+  },
+  "appPhrases": ["AI 生成白模", "设计师完成多样构图", "展示平台后台数据截图", "rounds", "roundMetricNote"],
+  "requiredFiles": ["gradient-waves.js", "hero-redesign.css", "logo-loop.css", "logo-loop.js", "projection-fit.css", "projection-fit.js", "copy-editor.css", "copy-editor.js", "motion-pause.css", "motion-pause.js", "assets/logo-loop/carita.png", "assets/logo-loop/ac.png", "assets/logo-loop/mugler.png", "assets/logo-loop/miu-miu.png", "assets/logo-loop/maison-margiela.png", "assets/logo-loop/pureology.png", "assets/logo-loop/rlf.png", "assets/logo-loop/brand-08.png", "assets/logo-loop/brand-09.png", "assets/blockout-product.jpeg", "assets/blockout-bag.jpeg", "assets/blockout-kv.jpeg", "assets/render-product.png", "assets/render-pair.png", "assets/final-kv.png", "assets/rounds/r1-01.jpeg", "assets/rounds/r2-04.jpeg", "assets/rounds/r3-04.jpeg", "assets/rounds/r4-05.jpeg"]
+}

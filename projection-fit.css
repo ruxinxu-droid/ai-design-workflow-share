@@ -1,0 +1,32 @@
+@media (min-width:901px){
+  html{scroll-snap-type:y proximity}
+  .panel{height:100svh;min-height:620px;padding:0;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:normal}
+  .panel.hero{height:100svh;min-height:620px}
+  .panel:not(.hero)>.panel-viewport{--fit-scale:1;position:absolute;z-index:2;left:50%;top:calc(50% + 24px);width:100%;transform:translate(-50%,-50%) scale(var(--fit-scale));transform-origin:center center}
+  #p3,#p5,#p9,#p13,#p14{padding-left:0;padding-right:0}
+  #p3>.panel-viewport,#p5>.panel-viewport,#p9>.panel-viewport,#p13>.panel-viewport,#p14>.panel-viewport{width:min(var(--max),calc(100% - 120px))}
+  .panel-viewport>header{max-width:1080px;margin-bottom:clamp(28px,5vh,58px)}
+  .panel-viewport>.ref{margin-top:0}
+  .panel-viewport>h2{margin-top:0}
+  #p5>.panel-viewport{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"head head" "fails proof" "action copy" "solution solution";column-gap:34px;row-gap:18px}
+  #p5 .panel-viewport>header{grid-area:head;margin-bottom:8px}
+  #p5 .fail-grid{grid-area:fails}
+  #p5 #revealSolution{grid-area:action;align-self:start;justify-self:start;margin:0}
+  #p5 .solution{grid-area:solution}
+  #p5 .solution-copy{grid-area:copy;align-self:start;margin:0;font-size:14px}
+  #p5 .solution-proof{grid-area:proof;margin:0}
+  #p5 .solution-proof figcaption{padding:10px;font-size:12px}
+
+  #p7>.panel-viewport{display:grid;grid-template-columns:.82fr 1.18fr;grid-template-areas:"head modes" "head scan" "result scan" ". notes";column-gap:6vw;align-items:center}
+  #p7 .panel-viewport>header{grid-area:head;align-self:end;margin:0}
+  #p7 .scan-modes{grid-area:modes;width:min(100%,560px);margin:0 auto 14px}
+  #p7 .scan{grid-area:scan;width:min(100%,560px);margin:auto}
+  #p7 .scan-notes{grid-area:notes;margin-top:18px}
+  #p7 .result-caption{grid-area:result;align-self:start;margin-top:32px;font-size:15px}
+  footer{scroll-snap-align:end}
+}
+
+@media (max-width:900px){
+  html{scroll-snap-type:none}
+  .panel-viewport{display:contents}
+}
